@@ -1,0 +1,77 @@
+<link rel="import" href="slides.html">
+    <x-slides>
+      <x-slide class="row"><img class="polymer-logo" src="images/logo.svg"/>&nbsp;<h1>Polymer</h1></x-slide>
+      <x-slide title="What is it?"></x-slide>
+      <x-slide title="A client-side framework">by Google Developers</x-slide>
+      <x-slide title="A glimpse at the future of web development"></x-slide>
+      <x-slide title="An example of what can be done with bleeding-edge browser technology"></x-slide>
+      <x-slide title="Features:"></x-slide>
+      <x-slide title="Templates">
+        <x-code>
+<template id="messages" repeat="{{ messages }}">
+  <li>{{message}}</li>
+</template>
+        </x-code>
+      </x-slide>
+      <x-slide title="2-Way Data Binding">
+        <x-code>
+<input id="progress" type="range" value="{{progress}}" min="0" max="1" step="0.01" />
+        </x-code>
+      </x-slide>
+      <x-slide title="Custom Elements">
+        <x-code>
+&lt;x-code&gt;
+  <input id="progress" type="range" value="{{progress}}" min="0" max="1" step="0.01" />
+&lt;/x-code&gt;
+        </x-code>
+      </x-slide>
+      <x-slide title="HTML Imports">
+      <pre>index.html:</pre>
+      <x-code>
+&lt;head&gt;
+  ...
+  <link rel="import" href="slides.html">
+  ...
+&lt;/head&gt;
+      </x-code>
+      </x-code>
+      </x-slide>
+      <x-slide title="How does it work?"></x-slide>
+      <x-slide title="Polyfills & Prollyfills"></x-slide>
+      <x-slide title="Polyfills:"><h3>add missing standardised features to browsers.</h3></x-slide>
+      <x-slide title="Prollyfills:"><h3>add missing "<em>probably&nbsp;going to&nbsp;be&nbsp;standardised</em>" features to browsers.</h3></x-slide>
+      <x-slide title="What browsers does it work in?"></x-slide>
+      <x-slide title="Evergreen Browsers">
+      i.e. browsers that auto-update
+      </x-slide>
+      <x-slide>
+        <ul>
+          <li>Chrome</li>
+          <li>Canary</li>
+          <li>Chrome Android</li>
+          <li>Firefox</li>
+          <li>Safari 6+</li>
+          <li>Mobile Safari</li>
+          <li>Internet Explorer 10+</li>
+        </ul>
+      </x-slide>
+      <x-slide title="What DOM&nbsp;+&nbsp;CSS&nbsp;+&nbsp;JS specifications"></x-slide>
+      <x-slide title="Custom Elements">
+        <x-code>
+<div class="menu">
+  <dropdown-menu on-click="navigate">
+    <dropdown-item>File</dropdown-item>
+    <dropdown-item>Edit</dropdown-item>
+    <dropdown-item>Help</dropdown-item>
+  </dropdown-menu>
+</div>
+</x-code>
+      </x-slide>
+      <x-slide title="Shadow DOM"></x-slide>
+      <x-slide title="HTML Imports"></x-slide>
+      <x-slide title="Pointer Events"></x-slide>
+      <x-slide title="Web Animations"></x-slide>
+      <x-slide title="Template Binding"></x-slide>
+      <x-slide title="Node.bind()"></x-slide>
+    </x-slides>
+

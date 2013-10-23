@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="polymer.min.js"></script>
+    <link rel="import" href="slides.html">
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+      }
+      .polymer-logo {
+        width: 1.6em;
+        height: 1.6em;
+      }
+      .polymer-logo {
+        width: 1.6em;
+        height: 1.6em;
+      }
+      .architecture-image {
+        font-size: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <x-slides>
+      <x-slide class="row"><img class="polymer-logo" src="images/logo.svg"/>&nbsp;<h1>Polymer</h1></x-slide>
+      <x-slide title="A client-side framework">by Google Developers</x-slide>
+      <x-slide title="Built on bleeding-edge browser technology"></x-slide>
+      <x-slide title="A glimpse at the future of web development"></x-slide>
+      <x-slide title="Templates">
+        <x-code>
+<template id="messages" repeat="{{ messages }}">
+  <li>{{message}}</li>
+</template>
+        </x-code>
+      </x-slide>
+      <x-slide title="2-Way Data Binding">
+        <x-code>
+<input id="progress" type="range" value="{{progress}}" />
+        </x-code>
+      </x-slide>
+      <x-slide title="Custom Elements">
+        <x-code>
+&lt;x-code&gt;
+  <input id="progress" type="range" value="{{progress}}" />
+&lt;/x-code&gt;
+        </x-code>
+      </x-slide>
+      <x-slide title="Custom Elements">
+        <x-code>
+&lt;hangout-chat from="Paul, Addy"&gt;
+    &lt;hangout-discussion&gt;
+      &lt;hangout-message from="Paul" profile="profile.png"&gt;
+        &lt;p&gt;Feelin' this Web Components thing.&lt;/p&gt;
+        &lt;p&gt;Heard of it?&lt;/p&gt;
+      &lt;/hangout-message&gt;
+    &lt;/hangout-discussion&gt;
+  &lt;/hangout-chat&gt;
+&lt;hangout-chat&gt;...&lt;/hangout-chat&gt;
+        </x-code>
+      </x-slide>
+      <x-slide title="UI Components">
+        <ul>
+          <li>polymer-ui-accordion</li>
+          <li>polymer-ui-menu</li>
+          <li>polymer-ui-tabs</li>
+          <li>polymer-ui-icon-button</li>
+          <li>polymer-ui-sidebar</li>
+          <li>polymer-ui-overlay</li>
+        </ul>
+      </x-slide>
+      <x-slide title="Utility Components">
+        <ul>
+          <li>polymer-flex-layout</li>
+          <li>polymer-collapse</li>
+          <li>polymer-animation</li>
+          <li>polymer-ajax</li>
+          <li>polymer-jsonp</li>
+          <li>polymer-localstorage</li>
+        </ul>
+      </x-slide>
+       <x-slide title="declarative bindings to non-view elements">
+        <x-code>
+<polymer-localstorage name="my-app-storage" value="{{value}}"></polymer-localstorage>
+        </x-code>
+      </x-slide>
+      <x-slide title="Other stuff">
+        <ul>
+          <li>Extending Existing Views</li>
+          <li>Change Watchers</li>
+          <li>Public/Private Properties</li>
+          <li>Switch between Shadow/Light DOM</li>
+          <li>Element Lifecycle Events</li>
+          <li>Data-binding Expressions</li>
+          <li>Nested Template Scoping</li>
+        </ul>
+      </x-slide>
+      <x-slide title="How does it work?"></x-slide>
+      <x-slide title="Web Standards"></x-slide>
+      <x-slide title="Defining a new Polymer Element">
+        <x-code>
+<polymer-element name="name-tag" attributes="name">
+  <template>
+    <h1>My name is Bill</h1> 
+  </template>
+  <script>
+    Polymer('name-tag')
+  </script>
+</polymer-element>
+        </x-code>      
+      </x-slide>
+      <x-slide title="New Custom Element using Native APIs">
+        <x-code>
+var NameTag = document.register('name-tag', {
+  prototype: Object.create(HTMLHeadingElement.prototype)
+}););
+        </x-code>      
+      </x-slide>
+      <x-slide title="Data-Binding using (probably) Native APIs">
+        <x-code>
+var nameTag = new NameTag()
+var input = document.getElementById('userName')
+nameTag.bind('value', nameTag, 'name');
+        </x-code>      
+      </x-slide>
+      <x-slide title="Polymer is just some tools and convenience APIs around web standards."></x-slide>
+      <x-slide title="Architecture"><img class="architechture-image" src="images/architecture-diagram.svg"/></x-slide>
+
+      <x-slide title="Polyfills & Prollyfills"></x-slide>
+      <x-slide title="Polyfills"><h3>implement any missing <em>standardised</em> features.</h3></x-slide>
+      <x-slide title="e.g. Shadow DOM is a Polyfill."><h4>It's definitely happening.</h4></x-slide>
+      <x-slide title="Prollyfills"><h3>implement any missing "<em>probably&nbsp;going to&nbsp;be&nbsp;standardised</em>" features to browsers.</h3></x-slide>
+      <x-slide title="e.g. Template&nbsp;Binding is a Prollyfill.">
+        <h4>"It might happen, we've suggested it be standardised. Here's a working implementation to play with."</h4>
+        </x-slide>
+      <x-slide title="A lot like Flex 4."></x-slide>
+      <x-slide title="A bit like Angular + Sencha."></x-slide>
+      <x-slide title="Closed Ecosystems" style="text-decoration: line-through;"></x-slide>
+      <x-slide title="Pushing the web forward.">
+      <h4>Others can build on top of the work going into Polymer</h4>
+      <h5>e.g. FirefoxOS uses polymer's platform.js</h5>
+      </x-slide>
+      <x-slide title="The new JQuery?"></x-slide>
+
+      <x-slide title="Questions?"></x-slide>
+
+      <x-slide title="What browsers does it work in?"></x-slide>
+      <x-slide title="Evergreen Browsers">
+      i.e. browsers that auto-update
+      </x-slide>
+      <x-slide title="Evergreen Browsers">
+        <ul>
+          <li>Chrome</li>
+          <li>Canary</li>
+          <li>Chrome Android</li>
+          <li>Firefox</li>
+          <li>Safari 6+</li>
+          <li>Mobile Safari</li>
+          <li>Internet Explorer 10+</li>
+        </ul>
+      </x-slide>
+    </body>
+</html>
+

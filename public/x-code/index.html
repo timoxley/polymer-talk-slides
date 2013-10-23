@@ -1,0 +1,23 @@
+<polymer-element name="x-code">
+  <script src="x-code/highlight.js"></script>
+  <link rel="stylesheet" href="x-code/highlight.css">
+  <style>
+    pre {
+      white-space: pre-wrap;
+    }
+  </style>
+  <template>
+    <pre><code><content></content></code></pre>
+  </template>
+  <script>
+    Polymer('x-code', {
+      created: function() {
+        var textarea = document.createElement("textarea");
+        textarea.innerHTML = this.impl.innerHTML.trim();
+        this.innerHTML = textarea.innerHTML
+        hljs.highlightBlock(this)
+      }
+    })
+  </script>
+</polymer-element>
+

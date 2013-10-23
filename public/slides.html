@@ -1,0 +1,167 @@
+<polymer-element
+  name="x-slides"
+  attributes="overall">
+  <link rel="import" href="/x-code"/>
+  <template>
+    <style>
+      @host { 
+        :scope {
+          position: absolute;
+          width: 100vw;
+          height: 100vh;
+          display: block;
+          background: whitesmoke;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 100vh;
+          -webkit-box-align: center;
+          -webkit-box-pack: center;
+        } 
+      } 
+      footer {
+        position: relative;
+        align-self: flex-end;
+      }
+    </style>
+    <content></content>
+    <footer>
+      <input id="progress" type="range" value="{{progress}}" min="0" max="1" step="0.01">
+    </footer>
+  </template>
+  <script>
+    Polymer('x-slides', {
+      current: null,
+      slides: [],
+      get progress() {
+        var currentIndex = this.slides.indexOf(this.current)
+        return currentIndex / this.slides.length || 0
+      },
+      set progress(val) {
+        this.go(parseInt(val * this.slides.length, 10))
+      },
+      created: function() {
+        [].forEach.call(this.children, function(child) {
+          this.slides.push(child)
+          child.hide()
+        }, this)
+        this.next()
+        this.focus()
+        document.addEventListener('keydown', this.keydownHandler.bind(this))
+      },
+      next: function() {
+        if (this.current) {
+          this.current.hide()
+          this.current = this.current.nextElementSibling
+        }
+
+        this.current = this.current || this.slides[0]
+        this.current.show()
+      },
+      prev: function() {
+        if (this.current) {
+          this.current.hide()
+          this.current = this.current.previousElementSibling
+        }
+
+        this.current = this.current || this.slides[this.slides.length - 1]
+        this.current.show()
+      },
+      go: function(index) {
+        console.log(index)
+        if (this.current) {
+          this.current.hide()
+          this.current = this.slides[index]
+        }
+
+        this.current = this.current || this.slides[0]
+        this.current.show()
+      },
+      keydownHandler: function(e) {
+        if (e.which === 39) this.next()
+        if (e.which === 32) this.next()
+        if (e.which === 37) this.prev()
+      }
+    });
+  </script>
+</polymer-element>
+
+<polymer-element name="x-slide">
+  <template>
+    <style>
+      @host {
+        :scope {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right:0;
+          bottom:0;
+          display: block;
+          width: 100vw;
+          height: 100vh;
+          box-sizing: border-box;
+          padding: 0 20vh;
+          font-family: Helvetica;
+          letter-spacing: -0.05em;
+          font-size: 360%;
+          opacity: 0;
+          transition-property: opacity;
+          transition-duration: 0.0s;
+        }
+        .visible {
+          opacity: 1;
+          transition-property: opacity;
+          transition-duration: 0.5s;
+        }
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        text-align: center;
+      }
+
+      x-code {
+        text-align: left;
+        font-size: 1.5rem;
+        letter-spacing: 0;
+      }
+      ul, h1, h2, h3 {
+        margin: 0.3em 0;
+      }
+      section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        flex-direction: column;
+        -webkit-box-align: center;
+        -webkit-box-pack: center;
+      }
+
+      section.row {
+        flex-direction: row;
+      }      
+
+    </style>
+    <div>
+      <section class="{{direction}}">
+        <h1>{{title}}</h1>
+        <content></content>
+      </section>
+    </div>
+  </template>
+  <script>
+    Polymer('x-slide', {
+      get direction() {
+        return this.classList.contains('row')
+        ? 'row'
+        : 'column'
+      },
+      hide: function() {
+        this.classList.remove('visible')
+      },
+      show: function() {
+        this.classList.add('visible')
+      }
+    });
+  </script>
+</polymer-element>
